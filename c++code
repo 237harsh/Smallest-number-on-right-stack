@@ -1,0 +1,31 @@
+ 
+ 
+ 
+ //all consept is same 
+ //only cheak for arr[i]<st.top();
+    public:
+    vector<int> help_classmate(vector<int> arr, int n) 
+    { 
+        vector<int>an;
+        stack<int>st;
+        for(int i=n-1;i>=0;i--)
+        {
+            if(st.empty())
+            an.push_back(-1);
+            else if(st.top()<arr[i])
+            an.push_back(st.top());
+            else
+            {
+                while(!st.empty()&&!(st.top()<arr[i]))
+                st.pop();
+                if(st.empty())
+                  an.push_back(-1);
+                  else
+                   an.push_back(st.top());
+            }
+            st.push(arr[i]);
+            
+        }
+         reverse(an.begin(),an.end());
+       return an;
+    } 
